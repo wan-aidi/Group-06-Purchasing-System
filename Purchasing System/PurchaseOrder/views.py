@@ -37,6 +37,8 @@ def purchaseorderform(request):
     return render(request,'PurchaseOrder/purchaseorderform.html',context)
 
 
+   
+
 @login_required
 def fillingpurchaseorder(request):
 
@@ -84,6 +86,22 @@ def fillingpurchaseorder(request):
                         'title': 'Purchase Order Form'
                 }
             return render(request,'PurchaseOrder/purchaseorderform.html',context)
+
+@login_required
+def selectview(request):
+   item  = Quotation.objects.all() # use filter() when you have sth to filter ;)
+   form = request.POST.get['browsers'] # you seem to misinterpret the use of form from django and POST data. you should take a look at [Django with forms][1]
+   # you can remove the preview assignment (form =request.POST)
+   if request.method == 'POST':
+      selected_item = get_object_or_404(Quotation, pk=request.POST.get('quotation_id'))
+      # get the user you want (connect for example) in the var "user"
+      user.item = selected_item
+      user.save()
+      context = {'items':item}
+      # Then, do a redirect for example
+
+   return render(request, 'PurchaseOrder/purchaseorderform.html', context)
+   
 
 def purchaseorderconfirmation(request):
 

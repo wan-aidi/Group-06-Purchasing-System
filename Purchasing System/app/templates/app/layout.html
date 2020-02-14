@@ -10,6 +10,9 @@
     <script src="{% static 'app/scripts/modernizr-2.6.2.js' %}"></script>
 </head>
 
+
+
+
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -24,7 +27,16 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url 'menu' %}">Menu</a></li>
+                    
+                    {% if u_employee %}
+                        <li><a href="{% url 'menu' %}">Menu</a></li>
+                    {% elif u_manager %}
+                        <li><a href="{% url 'menu' %}">Menu</a></li>
+                    {% elif u_finance %}
+                        <li><a href="{% url 'menu' %}">Menu</a></li>
+                    {% endif %}
+                    
+                    <li><a href="{% url 'menu' %}">Main Menu</a></li>
                     <li><a href="{% url 'about' %}">About</a></li>
                     <li><a href="{% url 'contact' %}">Contact</a></li>
                     

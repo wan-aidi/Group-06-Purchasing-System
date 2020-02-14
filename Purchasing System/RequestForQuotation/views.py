@@ -43,7 +43,12 @@ def fillingrequestforquotation(request):
 
     context = {}
     pr_id = request.GET['pr_id']
-    rfq_id = random.randint(1000000,9999999)
+    rfq_id = 1001
+
+    rfqs = RequestForQuotation.objects.all()
+    number = len(rfqs)
+    rfq_id = int(rfq_id) +  int(number)
+
     staff_id = request.user.id
     staff_info = Person.objects.get(user_id = staff_id)
 
