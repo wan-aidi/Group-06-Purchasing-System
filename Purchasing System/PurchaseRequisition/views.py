@@ -24,7 +24,10 @@ import datetime
 @login_required
 def purchaserequisitionform(request):
     
-    pr_id = random.randint(10000000,99999999)
+    pr_id = 1001
+    purchasereqs = PurchaseRequisition.objects.all()
+    numberpo = len(purchasereqs)
+    pr_id = int(pr_id) + int(numberpo)
     user_id = request.user.id
     person = Person.objects.get(user_id = user_id)
 

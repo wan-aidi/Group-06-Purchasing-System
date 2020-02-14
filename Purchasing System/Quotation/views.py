@@ -39,7 +39,11 @@ def fillingquotation(request):
 
     context = {}
     re_of_quo_id = request.GET['re_of_quo_id']
-    quo_id = random.randint(1000000,9999999)
+    quo_id = 1001
+    quotations = Quotation.objects.all()
+    numberpo = len(quotations)
+    quo_id = int(quo_id) + int(numberpo)
+
     user_id  = request.user.id
     staff = Person.objects.get(user_id = user_id)
     try: 

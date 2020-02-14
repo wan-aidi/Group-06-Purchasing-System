@@ -63,3 +63,20 @@ def menu(request):
     context['user'] = request.user
 
     return render(request,'app/menu.html',context)
+
+@login_required
+def layout(request):
+    check_employee = request.user.groups.filter(name='employee').exists()
+    check_manager = request.user.groups.filter(name='manager').exists()
+    check_finance = request.user.groups.filter(name='finance').exists()
+
+    context = {
+            'title':'Main Menu',
+            'u_employee': check_employee,
+            'u_manager': check_manager,
+            'u_finance': check_finance,
+            'year':'2019/2020'
+        }
+    context['user'] = request.user
+
+    return render(request,'app/layout.html',context)

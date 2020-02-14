@@ -25,6 +25,7 @@ admin.autodiscover()
 urlpatterns = [
     # Examples:
     url(r'^$', app.views.home, name='home'),
+    url(r'^layout$', app.views.layout, name='layout'),
     url(r'^contact$', app.views.contact, name='contact'),
     url(r'^about$', app.views.about, name='about'),
     url(r'^login/$',
@@ -79,11 +80,13 @@ urlpatterns = [
 
     #purchase order
     url(r'^purchaseorderform$', PurchaseOrder.views.purchaseorderform, name="purchase_order_form"),
+    url(r'^selectview', PurchaseOrder.views.selectview, name="select_view"),
     url(r'^fillingpurchaseorder', PurchaseOrder.views.fillingpurchaseorder, name="fill_purchase_order_form"),
     url(r'^purchaseorderconfirmation', PurchaseOrder.views.purchaseorderconfirmation, name="confirm_purchase_order"),
     url(r'^purchaseorderdetails', PurchaseOrder.views.purchaseorderdetails, name="purchase_order_details"),
     url(r'^purchaseorderhistorydetails', PurchaseOrder.views.purchaseorderhistorydetails, name='purchase_order_history_details'),
     url(r'^purchaseorderhistory', PurchaseOrder.views.purchaseorderhistory, name="purchase_order_history"),
+    
 
     #delivery order
     url(r'^deliveryorderform$', DeliveryOrder.views.deliveryorderform, name="delivery_order_form"),
